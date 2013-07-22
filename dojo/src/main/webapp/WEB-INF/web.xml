@@ -15,7 +15,7 @@
 
 	<context-param>
 		<param-name>configFilePath</param-name>
-		<param-value>D:\WorkSpace\eclipse\dojo\src\main\resources\config.ini
+		<param-value>D:\Program Files\Github\storage\Own\dojo\src\main\resources\config.ini
 		</param-value>
 		<description>配置文件路径</description>
 	</context-param>
