@@ -19,10 +19,6 @@
 		</param-value>
 		<description>配置文件路径</description>
 	</context-param>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
 	
 	
 	<!-- 字符集 过滤器 -->
@@ -50,13 +46,6 @@
 		</listener-class>
 	</listener>
 	
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
-
-
 
 	<!-- Spring view分发器 -->
 	<servlet>
@@ -65,7 +54,7 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+			<param-value>classpath:dispatcher-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
