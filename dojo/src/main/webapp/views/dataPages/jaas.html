@@ -1,0 +1,86 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;15.&nbsp;Java&#35748;&#35777;&#21644;&#25480;&#26435;&#26381;&#21153;&#65288;JAAS&#65289;&#20379;&#24212;&#22120;</title><link rel="stylesheet" href="html.css" tppabs="http://www.family168.com/tutorial/springsecurity/html/css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"><link rel="start" href="springsecurity.html" title="Spring Security"><link rel="up" href="authentication.html" title="Part&nbsp;III.&nbsp;&#35748;&#35777;"><link rel="prev" href="remember-me.html" title="Chapter&nbsp;14.&nbsp;Remember-Me&#35748;&#35777;"><link rel="next" href="preauth.html" title="Chapter&nbsp;16.&nbsp;&#39044;&#35748;&#35777;&#22330;&#26223;"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns:fo="http://www.w3.org/1999/XSL/Format" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="javascript:if(confirm('http://static.springframework.org/spring-ws/site/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://static.springframework.org/spring-ws/site/'" tppabs="http://static.springframework.org/spring-ws/site/" title="The Spring Framework - Spring Web Services"><img style="border:none;" src="xdev-spring_logo.jpg" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/xdev-spring_logo.jpg"></a><a style="border:none;" href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="s2-banner-rhs.png" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/s2-banner-rhs.png"></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="jaas"></a>Java&#35748;&#35777;&#21644;&#25480;&#26435;&#26381;&#21153;&#65288;JAAS&#65289;&#20379;&#24212;&#22120;</h1></div></div></div>
+    
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jaas-overview"></a>15.1.&nbsp;&#27010;&#36848;</h2></div></div></div>
+        
+        <p>Spring Security&#25552;&#20379;&#19968;&#20010;&#21253;&#65292;&#21487;&#20197;&#20195;&#29702;Java&#35748;&#35777;&#21644;&#25480;&#26435;&#26381;&#21153;&#65288;JAAS&#65289;&#30340;&#35748;&#35777;&#35831;&#27714;&#12290;
+            &#36825;&#20010;&#21253;&#30340;&#32454;&#33410;&#22312;&#19979;&#38754;&#35752;&#35770;&#12290;</p>
+
+        <p>JAAS&#30340;&#26680;&#24515;&#26159;&#30331;&#24405;&#37197;&#32622;&#25991;&#20214;&#12290;
+            &#24819;&#35201;&#20102;&#35299;&#26356;&#22810;JAAS&#30331;&#24405;&#37197;&#32622;&#25991;&#20214;&#30340;&#20449;&#24687;&#65292;&#21487;&#20197;&#26597;&#35810;Sun&#20844;&#21496;&#30340;JAAS&#21442;&#32771;&#25991;&#26723;&#12290;
+            &#25105;&#20204;&#24076;&#26395;&#20320;&#23545;JAAS&#26377;&#19968;&#20010;&#22522;&#26412;&#20102;&#35299;&#65292;&#20063;&#20102;&#35299;&#23427;&#30340;&#30331;&#24405;&#37197;&#32622;&#35821;&#27861;&#65292;&#36825;&#25165;&#33021;&#26356;&#22909;&#30340;&#29702;&#35299;&#36825;&#31456;&#30340;&#20869;&#23481;&#12290;</p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jaas-config"></a>15.2.&nbsp;&#37197;&#32622;</h2></div></div></div>
+        
+        <p>&#36825;&#20010; <code class="literal">JaasAuthenticationProvider</code> &#36890;&#36807;JAAS&#35748;&#35777;&#29992;&#25143;&#30340;&#20027;&#20307;&#21644;&#35777;&#20070;&#12290;</p>
+
+        <p>&#35753;&#25105;&#20204;&#20551;&#35774;&#25105;&#20204;&#26377;&#19968;&#20010;JAAS&#30331;&#24405;&#37197;&#32622;&#25991;&#20214;&#65292;<code class="literal">/WEB-INF/login.conf</code>&#65292;&#37324;&#36793;&#30340;&#20869;&#23481;&#22914;&#19979;&#65306;
+</p><pre class="programlisting">
+JAASTest {
+    sample.SampleLoginModule required;
+};</pre>
+        <p>&#23601;&#20687;&#25152;&#26377;&#30340;Spring Security bean&#19968;&#26679;&#65292;&#36825;&#20010;<code class="literal">JaasAuthenticationProvider</code> &#35201;&#37197;&#32622;&#22312;application context&#37324;&#12290;
+            &#19979;&#38754;&#30340;&#23450;&#20041;&#26159;&#19982;&#19978;&#38754;&#30340;JAAS&#30331;&#24405;&#37197;&#32622;&#25991;&#20214;&#23545;&#24212;&#30340;&#65306;
+</p><pre class="programlisting">
+&lt;bean id="jaasAuthenticationProvider"
+            class="org.springframework.security.providers.jaas.JaasAuthenticationProvider"&gt;
+  &lt;property name="loginConfig" value="/WEB-INF/login.conf"/&gt;
+  &lt;property name="loginContextName" value="JAASTest"/&gt;
+  &lt;property name="callbackHandlers"&gt;
+    &lt;list&gt;
+      &lt;bean class="org.springframework.security.providers.jaas.JaasNameCallbackHandler"/&gt;
+      &lt;bean class="org.springframework.security.providers.jaas.JaasPasswordCallbackHandler"/&gt;
+    &lt;/list&gt;
+  &lt;/property&gt;
+  &lt;property name="authorityGranters"&gt;
+    &lt;list&gt;
+      &lt;bean class="org.springframework.security.providers.jaas.TestAuthorityGranter"/&gt;
+    &lt;/list&gt;
+  &lt;/property&gt;
+&lt;/bean&gt;
+</pre>
+
+        <p>&#36825;&#20010; <code class="literal">CallbackHandler</code>&#21644;<code class="literal">AuthorityGranter</code>&#20250;&#22312;&#19979;&#38754;&#36827;&#34892;&#35752;&#35770;&#12290;</p>
+
+        <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="jaas-callbackhandler"></a>15.2.1.&nbsp;JAAS CallbackHandler</h3></div></div></div>
+            
+
+            <p>&#22823;&#22810;&#25968;JAAS&#30340;<code class="literal">&#30331;&#24405;&#27169;&#22359;</code>&#38656;&#35201;&#35774;&#32622;&#19968;&#31995;&#21015;&#30340;&#22238;&#35843;&#26041;&#27861;&#12290;
+                &#36825;&#20123;&#22238;&#35843;&#26041;&#27861;&#36890;&#24120;&#29992;&#26469;&#33719;&#24471;&#29992;&#25143;&#30340;&#29992;&#25143;&#21517;&#21644;&#23494;&#30721;&#12290;</p>
+
+            <p>&#22312;Spring Security&#21457;&#24067;&#30340;&#26102;&#20505;&#65292;Spring Security&#36127;&#36131;&#29992;&#25143;&#20132;&#20114;&#65288;&#36890;&#36807;&#35748;&#35777;&#26426;&#21046;&#65289;&#12290;
+                &#22240;&#27492;&#65292;&#29616;&#22312;&#35748;&#35777;&#35831;&#27714;&#20351;&#29992;JAAS&#20195;&#29702;&#65292;Spring Security&#30340;&#35748;&#35777;&#26426;&#21046;&#23558;&#32452;&#35013;&#19968;&#20010;<code class="literal">Authentication</code>&#23545;&#35937;&#65292;&#23427;&#21253;&#21547;&#20102;&#25152;&#26377;JAAS<code class="literal">LoginModule</code>&#38656;&#35201;&#30340;&#20449;&#24687;&#12290;</p>
+
+            <p>&#22240;&#27492;&#65292;Spring Security&#30340;JAAS&#21253;&#25552;&#20379;&#20004;&#20010;&#40664;&#35748;&#30340;&#22238;&#35843;&#22788;&#29702;&#22120;&#65292;<code class="literal">JaasNameCallbackHandler</code> &#21644;
+                <code class="literal">JaasPasswordCallbackHandler</code>&#12290;
+                &#20182;&#20204;&#20004;&#20010;&#37117;&#23454;&#29616;&#20102;<code class="literal">JaasAuthenticationCallbackHandler</code>&#12290;
+                &#22823;&#22810;&#25968;&#24773;&#20917;&#19979;&#65292;&#36825;&#20123;&#22238;&#35843;&#20989;&#25968;&#21487;&#20197;&#30452;&#25509;&#20351;&#29992;&#65292;&#19981;&#29992;&#20102;&#35299;&#23427;&#20204;&#30340;&#20869;&#37096;&#26426;&#21046;&#12290;</p>
+
+            <p>&#20026;&#20102;&#38656;&#35201;&#23436;&#20840;&#25511;&#21046;&#22238;&#35843;&#34892;&#20026;&#65292;&#20869;&#37096;<code class="literal">JaasAutheticationProvider</code>&#20351;&#29992;&#19968;&#20010;<code class="literal">InternalCallbackHandler</code>&#23553;&#35013;&#36825;&#20010;<code class="literal">JaasAuthenticationCallbackHandler</code>&#12290;
+                &#36825;&#20010;<code class="literal">InternalCallbackHandler</code>&#25165;&#26159;&#23454;&#38469;&#23454;&#29616;&#20102;JAAS&#36890;&#24120;&#30340;<code class="literal">CallbackHandler</code>&#25509;&#21475;&#12290;
+                &#20219;&#20309;&#26102;&#20505;JAAS<code class="literal">LoginModule</code>&#34987;&#20351;&#29992;&#30340;&#26102;&#20505;&#65292;&#23427;&#20256;&#36882;&#19968;&#20010;application context&#37324;&#37197;&#32622;&#30340;<code class="literal">InternalCallbackHandler</code>&#21015;&#34920;&#12290;
+                &#22914;&#26524;&#36825;&#20010;<code class="literal">LoginModule</code>&#38656;&#35201;&#22238;&#35843;<code class="literal">InternalCallbackHandler</code>&#65292;&#22238;&#35843;&#20250;&#20256;&#36882;&#23553;&#35013;&#22909;&#30340;<code class="literal">JaasAuthenticationCallbackHandler</code>&#12290;</p>
+        </div>
+
+        <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="jaas-authoritygranter"></a>15.2.2.&nbsp;JAAS AuthorityGranter</h3></div></div></div>
+            
+
+            <p>JAAS&#24037;&#20316;&#22312;&#20027;&#20307;&#19978;&#12290;
+                &#20219;&#20309;&#8220;&#35282;&#33394;&#8221;&#22312;JAAS&#37324;&#37117;&#26159;&#20316;&#20026;&#20027;&#20307;&#34920;&#29616;&#30340;&#12290;
+                &#21478;&#19968;&#26041;&#38754;Spring Security&#20351;&#29992;<code class="literal">Authentication</code>&#23545;&#35937;&#12290;
+                &#27599;&#20010;<code class="literal">Authentication</code>&#23545;&#35937;&#21253;&#21547;&#21333;&#29420;&#30340;&#20027;&#20307;&#21644;&#22810;&#20010;<code class="literal">GrantedAuthority[]</code>&#12290;
+                &#20026;&#20102;&#26041;&#20415;&#26144;&#23556;&#19981;&#21516;&#30340;&#27010;&#24565;&#65292;Spring Security&#30340;JAAS&#21253;&#21253;&#21547;&#20102;<code class="literal">AuthorityGranter</code>&#25509;&#21475;&#12290;</p>
+
+            <p>&#19968;&#20010; <code class="literal">AuthorityGranter</code> &#36127;&#36131;&#26816;&#26597;JAAS&#20027;&#20307;&#65292;&#36820;&#22238;&#19968;&#20010;<code class="literal">String</code>&#12290;
+                <code class="literal">JaasAuthenticationProvider</code>&#20250;&#21019;&#24314;&#19968;&#20010;<code class="literal">JaasGrantedAuthority</code>&#65288;&#23454;&#29616;&#20102;Spring Security&#30340;<code class="literal">GrantedAuthority</code>&#25509;&#21475;&#65289;&#65292;&#21253;&#21547;&#20102;<code class="literal">AuthorityGranter</code>&#36820;&#22238;&#30340;&#23383;&#31526;&#20018;&#21644;<code class="literal">AuthorityGranter</code>&#20256;&#36882;&#30340;JAAS&#20027;&#20307;&#12290;
+                <code class="literal">JaasAuthenticationProvider</code>&#33719;&#24471;JAAS&#20027;&#20307;&#65292;&#36890;&#36807;&#39318;&#20808;&#25104;&#21151;&#35748;&#35777;&#29992;&#25143;&#30340;&#35777;&#20070;&#65292;&#20351;&#29992;JAAS&#30340;<code class="literal">LoginModule</code>&#65292;&#28982;&#21518;&#35843;&#29992;<code class="literal">LoginContext.getSubject().getPrincipals()</code>&#65292;&#20351;&#29992;&#36820;&#22238;&#30340;&#27599;&#20010;&#20027;&#20307;&#65292;&#20256;&#36882;&#21040;&#27599;&#20010;<code class="literal">AuthorityGranter</code>&#37324;&#65292;&#26368;&#21518;&#23450;&#20041;&#22312;<code class="literal">JaasAuthenticationProvider.setAuthorityGranters(List)</code>&#23646;&#24615;&#37324;&#12290;</p>
+
+            <p>Spring Security&#27809;&#26377;&#21253;&#21547;&#20219;&#20309;&#20135;&#21697;&#22411;&#30340;<code class="literal">AuthorityGranter</code>&#65292;&#22240;&#20026;&#27599;&#20010;JAAS&#20027;&#20307;&#37117;&#26377;&#29305;&#27530;&#23454;&#29616;&#30340;&#24847;&#20041;&#12290;
+                &#20294;&#26159;&#65292;&#36825;&#37324;&#30340;&#21333;&#20803;&#27979;&#35797;&#37324;&#26377;&#19968;&#20010;<code class="literal">TestAuthorityGranter</code>&#65292;&#28436;&#31034;&#20102;&#19968;&#20010;&#31616;&#21333;&#30340;<code class="literal">AuthorityGranter</code>&#23454;&#29616;&#12290;</p>
+        </div>
+    </div>
+</div><div xmlns:fo="http://www.w3.org/1999/XSL/Format" class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="remember-me.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/remember-me.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="springsecurity.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/springsecurity.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="preauth.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/preauth.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;14.&nbsp;Remember-Me&#35748;&#35777;&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource">Sponsored by SpringSource
+                                        </a></span></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;16.&nbsp;&#39044;&#35748;&#35777;&#22330;&#26223;</td></tr></table></div></body></html><script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www./");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">var pageTracker = _gat._getTracker("UA-2857097-3");pageTracker._initData();pageTracker._trackPageview();</script>

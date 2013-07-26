@@ -1,0 +1,157 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;16.&nbsp;&#39044;&#35748;&#35777;&#22330;&#26223;</title><link rel="stylesheet" href="html.css" tppabs="http://www.family168.com/tutorial/springsecurity/html/css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"><link rel="start" href="springsecurity.html" title="Spring Security"><link rel="up" href="authentication.html" title="Part&nbsp;III.&nbsp;&#35748;&#35777;"><link rel="prev" href="jaas.html" title="Chapter&nbsp;15.&nbsp;Java&#35748;&#35777;&#21644;&#25480;&#26435;&#26381;&#21153;&#65288;JAAS&#65289;&#20379;&#24212;&#22120;"><link rel="next" href="anonymous.html" title="Chapter&nbsp;17.&nbsp;&#21311;&#21517;&#35748;&#35777;"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns:fo="http://www.w3.org/1999/XSL/Format" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="javascript:if(confirm('http://static.springframework.org/spring-ws/site/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://static.springframework.org/spring-ws/site/'" tppabs="http://static.springframework.org/spring-ws/site/" title="The Spring Framework - Spring Web Services"><img style="border:none;" src="xdev-spring_logo.jpg" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/xdev-spring_logo.jpg"></a><a style="border:none;" href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="s2-banner-rhs.png" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/s2-banner-rhs.png"></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="preauth"></a>&#39044;&#35748;&#35777;&#22330;&#26223;</h1></div></div></div>
+  
+  <p>&#26377;&#30340;&#24773;&#20917;&#19979;&#65292;&#20320;&#38656;&#35201;&#20351;&#29992;Spring Security&#36827;&#34892;&#35748;&#35777;&#65292;&#20294;&#26159;&#29992;&#25143;&#24050;&#32463;&#22312;&#35775;&#38382;&#31995;&#32479;&#20043;&#21069;&#65292;&#22312;&#19968;&#20123;&#22806;&#37096;&#31995;&#32479;&#20013;&#35748;&#35777;&#36807;&#20102;&#12290;
+    &#25105;&#20204;&#25226;&#36825;&#31181;&#24773;&#20917;&#21483;&#20570;&#8220;<span class="quote">&#39044;&#35748;&#35777;</span>&#8221;&#22330;&#26223;&#12290;
+    &#20363;&#23376;&#21253;&#25324;X.509&#65292;Siteminder&#21644;&#24212;&#29992;&#25152;&#22312;&#30340;J2EE&#23481;&#22120;&#36827;&#34892;&#35748;&#35777;&#12290;
+    &#22312;&#20351;&#29992;&#39044;&#35748;&#35777;&#30340;&#20351;&#29992;&#65292;Spring Security&#24517;&#39035;
+    </p><div class="orderedlist"><ol type="1"><li>
+        <p>&#23450;&#20041;&#20351;&#29992;&#35831;&#27714;&#30340;&#29992;&#25143;</p>
+      </li><li>
+        <p>&#20174;&#29992;&#25143;&#37324;&#33719;&#24471;&#26435;&#38480;</p>
+      </li></ol></div><p>&#32454;&#33410;&#20449;&#24687;&#35201;&#20381;&#38752;&#22806;&#37096;&#35748;&#35777;&#26426;&#21046;&#12290;
+    &#19968;&#20010;&#29992;&#25143;&#21487;&#33021;&#65292;&#22312;X.509&#30340;&#24773;&#20917;&#19979;&#30001;&#35748;&#35777;&#20449;&#24687;&#30830;&#23450;&#65292;&#25110;&#22312;Siteminder&#30340;&#24773;&#20917;&#19979;&#20351;&#29992;HTTP&#35831;&#27714;&#22836;&#12290;
+    &#23545;&#20110;&#23481;&#22120;&#35748;&#35777;&#65292;&#38656;&#35201;&#35843;&#29992;&#33719;&#24471;HTTP&#35831;&#27714;&#30340;<code class="methodname">getUserPrincipal()</code>&#26041;&#27861;&#26469;&#30830;&#35748;&#29992;&#25143;&#12290;
+    &#19968;&#20123;&#24773;&#20917;&#19979;&#65292;&#22806;&#37096;&#26426;&#21046;&#21487;&#33021;&#20026;&#29992;&#25143;&#25552;&#20379;&#35282;&#33394;/&#26435;&#38480;&#20449;&#24687;&#65292;&#20854;&#20182;&#24773;&#20917;&#23601;&#38656;&#35201;&#36890;&#36807;&#21333;&#29420;&#20449;&#24687;&#28304;&#33719;&#24471;&#65292;&#27604;&#22914;<code class="interfacename">UserDetailsService</code>&#12290;
+  </p>
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e1854"></a>16.1.&nbsp;&#39044;&#35748;&#35777;&#26694;&#26550;&#31867;</h2></div></div></div>
+    
+    <p>&#22240;&#20026;&#22823;&#22810;&#25968;&#39044;&#35748;&#35777;&#26426;&#21046;&#37117;&#36981;&#24490;&#30456;&#21516;&#30340;&#27169;&#24335;&#65292;&#25152;&#20197;Spring Security&#25552;&#20379;&#20102;&#19968;&#31995;&#21015;&#30340;&#31867;&#65292;&#23427;&#20204;&#20316;&#20026;&#20869;&#37096;&#26694;&#26550;&#23454;&#29616;&#39044;&#35748;&#35777;&#35748;&#35777;&#25552;&#20379;&#22120;&#12290;
+      &#36825;&#26679;&#23601;&#36991;&#20813;&#20102;&#37325;&#22797;&#23454;&#29616;&#65292;&#35753;&#26032;&#23454;&#29616;&#24456;&#23481;&#26131;&#28155;&#21152;&#21040;&#32467;&#26500;&#20013;&#65292;&#19981;&#38656;&#35201;&#19968;&#20999;&#20174;&#33050;&#25163;&#26550;&#24320;&#22987;&#20889;&#36215;&#12290;
+      &#20320;&#19981;&#38656;&#35201;&#30693;&#36947;&#36825;&#20123;&#31867;&#65292;&#22914;&#26524;&#20320;&#24819;&#20351;&#29992;&#19968;&#20123;&#19996;&#35199;&#65292;&#27604;&#22914;<a href="x509.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/x509.html" title="Chapter&nbsp;18.&nbsp;X.509&#35748;&#35777;">X.509&#35748;&#35777;</a>&#65292;&#22240;&#20026;&#23427;&#24050;&#32463;&#26159;&#21629;&#21517;&#31354;&#38388;&#37197;&#32622;&#37324;&#30340;&#19968;&#20010;&#36873;&#39033;&#20102;&#65292;&#21487;&#20197;&#24456;&#31616;&#21333;&#30340;&#20351;&#29992;&#65292;&#21551;&#21160;&#23427;&#12290;
+      &#22914;&#26524;&#20320;&#38656;&#35201;&#20351;&#29992;&#31934;&#30830;&#30340;bean&#37197;&#32622;&#65292;&#25110;&#35745;&#21010;&#32534;&#20889;&#20320;&#33258;&#24049;&#30340;&#23454;&#29616;&#65292;&#36825;&#26102;&#20102;&#35299;&#36825;&#20123;&#25552;&#20379;&#30340;&#23454;&#29616;&#26159;&#22914;&#20309;&#24037;&#20316;&#23601;&#24456;&#26377;&#29992;&#20102;&#12290;
+      &#20320;&#20250;&#22312;<span class="package">org.springframework.security.ui.preauth</span>&#21253;&#19979;&#25214;&#21040;web&#30456;&#20851;&#30340;&#31867;&#65292;&#21518;&#21488;&#31867;&#37117;&#22312;<span class="package">org.springframework.security.providers.preauth</span>&#21253;&#37324;&#12290;
+      &#25105;&#20204;&#36825;&#37324;&#21482;&#25552;&#20379;&#19968;&#20010;&#32434;&#35201;&#65292;&#20320;&#24212;&#35813;&#20174;&#23545;&#24212;&#30340;Javadoc&#21644;&#28304;&#20195;&#30721;&#37324;&#33719;&#24471;&#26356;&#22810;&#20449;&#24687;&#12290;
+    </p>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1860"></a>16.1.1.&nbsp;AbstractPreAuthenticatedProcessingFilter</h3></div></div></div>
+      
+      <p>
+         &#36825;&#20010;&#31867;&#20250;&#26816;&#27979;&#23433;&#20840;&#29615;&#22659;&#30340;&#24403;&#21069;&#20869;&#23481;&#65292;&#22914;&#26524;&#26159;&#31354;&#30340;&#65292;&#23427;&#20250;&#20174;HTTP&#35831;&#27714;&#37324;&#33719;&#24471;&#20449;&#24687;&#65292;&#25552;&#20132;&#32473;<code class="interfacename">AuthenticationManager</code>&#12290;
+         &#23376;&#31867;&#37325;&#20889;&#20102;&#20197;&#19979;&#26041;&#27861;&#26469;&#33719;&#24471;&#20449;&#24687;&#65306;
+</p><pre class="programlisting">
+  protected abstract Object getPreAuthenticatedPrincipal(HttpServletRequest request);
+
+  protected abstract Object getPreAuthenticatedCredentials(HttpServletRequest request);
+</pre><p>
+        &#22312;&#35843;&#29992;&#20043;&#21518;&#65292;&#36807;&#28388;&#22120;&#20250;&#21019;&#24314;&#19968;&#20010;&#21253;&#21547;&#20102;&#36820;&#22238;&#25968;&#25454;&#30340;<code class="classname">PreAuthenticatedAuthenticationToken</code>&#65292;&#28982;&#21518;&#25552;&#20132;&#23427;&#36827;&#34892;&#35748;&#35777;&#12290;
+        &#36890;&#36807;&#36825;&#37324;&#30340;&#8220;<span class="quote">authentication</span>&#8221;&#65292;&#25105;&#20204;&#20854;&#23454;&#21482;&#26159;&#21487;&#33021;&#36827;&#34892;&#35835;&#21462;&#29992;&#25143;&#30340;&#26435;&#38480;&#65292;&#19981;&#36807;&#19979;&#38754;&#23601;&#26159;&#26631;&#20934;&#30340;Spring Security&#35748;&#35777;&#32467;&#26500;&#20102;&#12290;
+      </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1867"></a>16.1.2.&nbsp;AbstractPreAuthenticatedAuthenticationDetailsSource</h3></div></div></div>
+      
+      <p>
+        &#23601;&#20687;&#20854;&#20182;&#30340;Spring Security&#35748;&#35777;&#36807;&#28388;&#22120;&#19968;&#26679;&#65292;&#39044;&#35748;&#35777;&#36807;&#28388;&#22120;&#26377;&#19968;&#20010;<code class="literal">authenticationDetailsSource</code>&#23646;&#24615;&#65292;&#40664;&#35748;&#20250;&#21019;&#24314;&#19968;&#20010;<code class="classname">WebAuthenticationDetails</code>&#23545;&#35937;&#26469;&#20445;&#23384;&#39069;&#22806;&#30340;&#20449;&#24687;&#65292;&#27604;&#22914;&#22312;<code class="interfacename">Authentication</code>&#23545;&#35937;&#30340;<code class="literal">details</code>&#23646;&#24615;&#37324;&#30340;&#20250;&#35805;&#26631;&#35782;&#65292;&#21407;&#22987;IP&#22320;&#22336;&#12290;
+        &#29992;&#25143;&#35282;&#33394;&#20449;&#24687;&#21487;&#20197;&#20174;&#39044;&#35748;&#35777;&#26426;&#21046;&#20013;&#33719;&#24471;&#65292;&#25968;&#25454;&#20063;&#20445;&#23384;&#22312;&#36825;&#20010;&#23646;&#24615;&#37324;&#12290;
+        <code class="classname">AbstractPreAuthenticatedAuthenticationDetailsSource</code>&#30340;&#23376;&#31867;&#65292;&#20351;&#29992;&#23454;&#29616;&#20102;<code class="interfacename">GrantedAuthoritiesContainer</code>&#25509;&#21475;&#30340;&#25193;&#23637;&#20449;&#24687;&#65292;&#22240;&#27492;&#21487;&#20197;&#20351;&#29992;&#35748;&#35777;&#25552;&#20379;&#20854;&#22120;&#26469;&#35835;&#21462;&#26435;&#38480;&#65292;&#26126;&#30830;&#23450;&#20301;&#29992;&#25143;&#12290;
+        &#19979;&#38754;&#25105;&#20204;&#30475;&#19968;&#20010;&#20855;&#20307;&#30340;&#20363;&#23376;&#12290;
+      </p>
+      <div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="j2ee-preauth-details"></a>16.1.2.1.&nbsp;J2eeBasedPreAuthenticatedWebAuthenticationDetailsSource</h4></div></div></div>
+        
+        <p>
+          &#22914;&#26524;&#36807;&#28388;&#22120;&#37197;&#32622;&#20102;<code class="literal">authenticationDetailsSource</code>&#30340;&#23454;&#20363;&#65292;&#36890;&#36807;&#35843;&#29992;<code class="methodname">isUserInRole(String role)</code>&#26041;&#27861;&#20026;&#27599;&#20010;&#39044;&#20808;&#20915;&#23450;&#30340;&#8220;<span class="quote">&#21487;&#26144;&#23556;&#35282;&#33394;</span>&#8221;&#38598;&#21512;&#33719;&#24471;&#35748;&#35777;&#20449;&#24687;&#12290;
+          &#36825;&#20010;&#31867;&#20174;<code class="interfacename">MappableAttributesRetriever</code>&#37324;&#33719;&#24471;&#36825;&#20123;&#20449;&#24687;&#12290;
+          &#21487;&#33021;&#30340;&#23454;&#29616;&#26041;&#27861;&#65292;&#21253;&#21547;&#20102;&#22312;application context&#20013;&#36827;&#34892;&#30828;&#32534;&#30721;&#65292;&#25110;&#32773;&#20174;<code class="filename">web.xml</code>&#30340;<code class="literal">&lt;security-role&gt;</code>&#20013;&#35835;&#21462;&#35282;&#33394;&#20449;&#24687;&#12290;
+          &#39044;&#35748;&#35777;&#20363;&#23376;&#31243;&#24207;&#20351;&#29992;&#20102;&#21518;&#19968;&#31181;&#26041;&#24335;&#12290;
+        </p>
+        <p>&#36825;&#20799;&#26377;&#19968;&#20010;&#39069;&#22806;&#30340;&#27493;&#39588;&#65292;&#20351;&#29992;&#19968;&#20010;<code class="interfacename">Attributes2GrantedAuthoritiesMapper</code>&#25226;&#35282;&#33394;&#65288;&#25110;&#23646;&#24615;&#65289;&#26144;&#23556;&#21040;Spring Security&#30340;<code class="interfacename">GrantedAuthority</code>&#12290;
+          &#23427;&#40664;&#35748;&#21482;&#20250;&#20026;&#21517;&#31216;&#28155;&#21152;&#19968;&#20010;<code class="literal">ROLE_</code>&#21069;&#32512;&#65292;&#20294;&#26159;&#20320;&#21487;&#20197;&#23545;&#36825;&#20123;&#34892;&#20026;&#36827;&#34892;&#23436;&#20840;&#25511;&#21046;&#12290;
+        </p>
+      </div>
+    </div>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1889"></a>16.1.3.&nbsp;PreAuthenticatedAuthenticationProvider</h3></div></div></div>
+      
+      <p>
+        &#39044;&#35748;&#35777;&#25552;&#20379;&#22120;&#38500;&#20102;&#20174;&#29992;&#25143;&#20013;&#35835;&#21462;<code class="interfacename">UserDetails</code>&#20197;&#22806;&#65292;&#36824;&#35201;&#19968;&#20123;&#20854;&#20182;&#20107;&#24773;&#12290;
+        &#23427;&#36890;&#36807;&#35843;&#29992;&#19968;&#20010;<code class="interfacename">AuthenticationUserDetailsService</code>&#26469;&#20570;&#36825;&#20123;&#20107;&#24773;&#12290;
+        &#21518;&#32773;&#23601;&#26159;&#19968;&#20010;&#26631;&#20934;&#30340;<code class="interfacename">UserDetailsService</code>&#65292;&#20294;&#35201;&#38656;&#35201;&#30340;&#21442;&#25968;&#26159;&#19968;&#20010;<code class="interfacename">Authentication</code>&#23545;&#35937;&#65292;&#32780;&#19981;&#26159;&#29992;&#25143;&#21517;&#65306;
+</p><pre class="programlisting">
+  public interface AuthenticationUserDetailsService {
+    UserDetails loadUserDetails(Authentication token) throws UsernameNotFoundException;
+  }
+</pre><p>
+        &#36825;&#20010;&#25509;&#21475;&#21487;&#33021;&#20063;&#21547;&#26377;&#20854;&#20182;&#29992;&#25143;&#65292;&#20294;&#26159;&#39044;&#35748;&#35777;&#20801;&#35768;&#35775;&#38382;&#26435;&#38480;&#65292;&#25171;&#21253;&#22312;<code class="interfacename">Authentication</code>&#23545;&#35937;&#37324;&#65292;&#20687;&#19978;&#19968;&#33410;&#25152;&#35265;&#30340;&#12290;
+        &#36825;&#20010;<code class="classname">PreAuthenticatedGrantedAuthoritiesUserDetailsService</code>&#23601;&#26159;&#29992;&#26469;&#20316;&#36825;&#20010;&#30340;&#12290;
+        &#25110;&#32773;&#65292;&#23427;&#21487;&#33021;&#35843;&#29992;&#26631;&#20934;<code class="interfacename">UserDetailsService</code>&#65292;&#20351;&#29992;<code class="classname">UserDetailsByNameServiceWrapper</code>&#36825;&#20010;&#23454;&#29616;&#12290;
+      </p>
+    </div>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1901"></a>16.1.4.&nbsp;PreAuthenticatedProcessingFilterEntryPoint</h3></div></div></div>
+      
+      <p>
+        &#36825;&#20010; <code class="literal">AuthenticationEntryPoint</code> &#22312; <a href="technical-overview.html#tech-auth-entry-point" tppabs="http://www.family168.com/tutorial/springsecurity/html/technical-overview.html#tech-auth-entry-point" title="5.3.2.&nbsp;AuthenticationEntryPoint">&#25216;&#26415;&#27010;&#36848;</a> &#37027;&#31456;&#35752;&#35770;&#36807;&#12290;
+        &#36890;&#24120;&#23427;&#29992;&#26469;&#20026;&#26410;&#35748;&#35777;&#29992;&#25143;&#65288;&#24403;&#20182;&#20204;&#24819;&#35775;&#38382;&#34987;&#20445;&#25252;&#36164;&#28304;&#30340;&#26102;&#20505;&#65289;&#21551;&#21160;&#35748;&#35777;&#36807;&#31243;&#65292;&#20294;&#26159;&#22312;&#39044;&#35748;&#35777;&#24773;&#20917;&#19979;&#36825;&#19981;&#20250;&#21457;&#29983;&#12290;
+        &#22914;&#26524;&#20320;&#19981;&#20351;&#29992;&#39044;&#35748;&#35777;&#32467;&#21512;&#20854;&#20182;&#35748;&#35777;&#26426;&#21046;&#30340;&#35805;&#65292;&#20320;&#21482;&#35201;&#37197;&#32622;<code class="classname">ExceptionTranslationFilter</code>&#30340;&#19968;&#20010;&#23454;&#20363;&#12290;
+        &#22914;&#26524;&#29992;&#25143;&#30340;&#35775;&#38382;&#34987;&#25298;&#32477;&#20102;&#65292;&#23427;&#23601;&#20250;&#35843;&#29992;&#65292;<code class="classname">AbstractPreAuthenticatedProcessingFilter</code>&#32467;&#26524;&#36820;&#22238;&#30340;&#19968;&#20010;&#31354;&#30340;&#35748;&#35777;&#12290;
+        &#35843;&#29992;&#30340;&#26102;&#20505;&#65292;&#23427;&#24635;&#20250;&#36820;&#22238;&#19968;&#20010;<code class="literal">403</code>&#31105;&#29992;&#21709;&#24212;&#20195;&#30721;&#12290;
+      </p>
+    </div>
+  </div>
+
+  <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e1909"></a>16.2.&nbsp;&#20855;&#20307;&#23454;&#29616;</h2></div></div></div>
+    
+    <p>
+      X.509&#35748;&#35777;&#20889;&#22312;<a href="x509.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/x509.html" title="Chapter&nbsp;18.&nbsp;X.509&#35748;&#35777;">&#23427;&#33258;&#24049;&#30340;&#31456;</a>&#37324;&#12290;
+      &#36825;&#37324;&#65292;&#25105;&#20204;&#30475;&#19968;&#20123;&#25903;&#25345;&#20854;&#20182;&#39044;&#35748;&#35777;&#30340;&#22330;&#26223;&#12290;
+    </p>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1913"></a>16.2.1.&nbsp;&#35831;&#27714;&#22836;&#35748;&#35777;&#65288;Siteminder&#65289;</h3></div></div></div>
+      
+      <p>
+        &#19968;&#20010;&#22806;&#37096;&#35748;&#35777;&#31995;&#32479;&#21487;&#20197;&#36890;&#36807;&#22312;HTTP&#35831;&#27714;&#37324;&#35774;&#32622;&#29305;&#27530;&#30340;&#22836;&#20449;&#24687;&#65292;&#32473;&#24212;&#29992;&#25552;&#20379;&#20449;&#24687;&#12290;
+        &#19968;&#20010;&#20247;&#25152;&#21608;&#30693;&#30340;&#20363;&#23376;&#23601;&#26159;Siteminder&#65292;&#23427;&#22312;&#22836;&#37096;&#20256;&#36882;&#29992;&#25143;&#21517;&#65292;&#21483;&#20570;<code class="literal">SM_USER</code>&#12290;
+        &#36825;&#20010;&#26426;&#21046;&#34987;<code class="classname">RequestHeaderPreAuthenticatedProcessingFilter</code>&#25903;&#25345;&#65292;&#30452;&#25509;&#20174;&#22836;&#37096;&#24471;&#21040;&#29992;&#25143;&#21517;&#12290;
+        &#40664;&#35748;&#20351;&#29992;<code class="literal">SM_USER</code>&#20316;&#20026;&#22836;&#37096;&#21517;&#12290;
+        &#30475;&#19968;&#19979;Javadoc&#33719;&#24471;&#26356;&#22810;&#20449;&#24687;&#12290;
+      </p>
+      <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+        <p>&#27880;&#24847;&#20351;&#29992;&#36825;&#31181;&#31995;&#32479;&#26102;&#65292;&#26694;&#26550;&#19981;&#38656;&#35201;&#20316;&#20219;&#20309;&#35748;&#35777;&#26816;&#27979;&#65292;<span class="emphasis"><em>&#26497;&#31471;</em></span>&#37325;&#35201;&#30340;&#26159;&#65292;&#35201;&#25226;&#22806;&#37096;&#31995;&#32479;&#37197;&#32622;&#22909;&#65292;&#20445;&#25252;&#31995;&#32479;&#30340;&#25152;&#26377;&#35775;&#38382;&#12290;
+        &#22914;&#26524;&#25915;&#20987;&#32773;&#21487;&#20197;&#20174;&#21407;&#22987;&#35831;&#27714;&#20013;&#33719;&#24471;&#35831;&#27714;&#22836;&#65292;&#19981;&#36890;&#36807;&#26816;&#27979;&#65292;&#20182;&#20204;&#21487;&#33021;&#28508;&#22312;&#20462;&#25913;&#20219;&#20309;&#20182;&#20204;&#24819;&#35201;&#30340;&#29992;&#25143;&#21517;&#12290;
+        </p>
+      </div>
+      <div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d4e1922"></a>16.2.1.1.&nbsp;Siteminder&#31034;&#20363;&#37197;&#32622;</h4></div></div></div>
+        
+        <p>
+          &#20351;&#29992;&#36825;&#20010;&#36807;&#28388;&#22120;&#30340;&#20856;&#22411;&#37197;&#32622;&#24212;&#35813;&#20687;&#36825;&#26679;&#65306;
+</p><pre class="programlisting">
+    &lt;bean id="siteminderFilter"
+      class="org.springframework.security.ui.preauth.header.RequestHeaderPreAuthenticatedProcessingFilter"&gt;
+    &lt;security:custom-filter position="PRE_AUTH_FILTER" /&gt;
+    &lt;property name="principalRequestHeader" value="SM_USER"/&gt;
+    &lt;property name="authenticationManager" ref="authenticationManager" /&gt;
+  &lt;/bean&gt;
+
+  &lt;bean id="preauthAuthProvider"
+      class="org.springframework.security.providers.preauth.PreAuthenticatedAuthenticationProvider"&gt;
+    &lt;security:custom-authentication-provider /&gt;
+    &lt;property name="preAuthenticatedUserDetailsService"&gt;
+      &lt;bean id="userDetailsServiceWrapper"
+            class="org.springframework.security.userdetails.UserDetailsByNameServiceWrapper"&gt;
+        &lt;property name="userDetailsService" ref="userDetailsService"/&gt;
+      &lt;/bean&gt;
+    &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;security:authentication-manager alias="authenticationManager" /&gt;
+
+</pre><p>
+         &#25105;&#20204;&#20551;&#35774;&#20351;&#29992;&#23433;&#20840;&#21629;&#21517;&#31354;&#38388;&#30340;&#37197;&#32622;&#26041;&#24335;&#65292;<code class="literal">custom-filter</code>&#65292;&#20351;&#29992;&#20102;<code class="literal">authentication-manager</code>&#21644;<code class="literal">custom-authentication-provider</code>&#19977;&#20010;&#20803;&#32032;&#65288;&#20320;&#21487;&#20197;&#20174;<a xmlns:xlink="http://www.w3.org/1999/xlink" href="javascript:if(confirm('http://www.family168.com/tutorial/springsecurity/html/ns-config  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·þÎñÆ÷±¨¸æ¸ÃÎÄ¼þÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.family168.com/tutorial/springsecurity/html/ns-config'" tppabs="http://www.family168.com/tutorial/springsecurity/html/ns-config" target="_top">&#21629;&#21517;&#31354;&#38388;&#31456;&#33410;</a>&#37324;&#20102;&#35299;&#23427;&#20204;&#30340;&#26356;&#22810;&#20449;&#24687;&#65289;&#12290;
+         &#20320;&#24212;&#35813;&#36208;&#20986;&#20256;&#32479;&#30340;&#37197;&#32622;&#26041;&#24335;&#12290;
+         &#25105;&#20204;&#20063;&#20551;&#35774;&#20102;&#20320;&#22312;&#37197;&#32622;&#37324;&#28155;&#21152;&#20102;&#19968;&#20010;<code class="interfacename">UserDetailsService</code>&#65288;&#21517;&#21483;&#8220;<span class="quote">userDetailsService</span>&#8221;&#65289;&#65292;&#26469;&#35835;&#21462;&#29992;&#25143;&#30340;&#35282;&#33394;&#20449;&#24687;&#12290;
+        </p>
+      </div>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e1932"></a>16.2.2.&nbsp;J2EE&#23481;&#22120;&#35748;&#35777;</h3></div></div></div>
+      
+      <p>
+        &#36825;&#20010;<code class="classname">J2eePreAuthenticatedProcessingFilter</code>&#31867;&#20250;&#20174;<code class="interfacename">HttpServletRequest</code>&#30340;<code class="literal">userPrincipal</code>&#23646;&#24615;&#37324;&#33719;&#24471;&#20934;&#30830;&#30340;&#29992;&#25143;&#21517;&#12290;
+        &#36825;&#20010;&#36807;&#28388;&#22120;&#30340;&#29992;&#27861;&#24120;&#24120;&#32467;&#21512;&#20351;&#29992;J2EE&#35282;&#33394;&#65292;&#20687;&#19978;&#38754;&#25551;&#36848;&#30340;<a href="preauth.html#j2ee-preauth-details" tppabs="http://www.family168.com/tutorial/springsecurity/html/preauth.html#j2ee-preauth-details" title="16.1.2.1.&nbsp;J2eeBasedPreAuthenticatedWebAuthenticationDetailsSource">Section&nbsp;16.1.2.1, &#8220;J2eeBasedPreAuthenticatedWebAuthenticationDetailsSource&#8221;</a>&#12290;
+      </p>
+
+    </div>
+  </div>
+
+</div><div xmlns:fo="http://www.w3.org/1999/XSL/Format" class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="jaas.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/jaas.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="springsecurity.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/springsecurity.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="anonymous.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/anonymous.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;15.&nbsp;Java&#35748;&#35777;&#21644;&#25480;&#26435;&#26381;&#21153;&#65288;JAAS&#65289;&#20379;&#24212;&#22120;&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource">Sponsored by SpringSource
+                                        </a></span></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;17.&nbsp;&#21311;&#21517;&#35748;&#35777;</td></tr></table></div></body></html>

@@ -1,0 +1,110 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;3.&nbsp;&#31034;&#20363;&#31243;&#24207;</title><link rel="stylesheet" href="html.css" tppabs="http://www.family168.com/tutorial/springsecurity/html/css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"><link rel="start" href="springsecurity.html" title="Spring Security"><link rel="up" href="getting-started.html" title="Part&nbsp;I.&nbsp;&#20837;&#38376;"><link rel="prev" href="ns-config.html" title="Chapter&nbsp;2.&nbsp;Security&#21629;&#21517;&#31354;&#38388;&#37197;&#32622;"><link rel="next" href="community.html" title="Chapter&nbsp;4.&nbsp;Spring Security&#31038;&#21306;"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns:fo="http://www.w3.org/1999/XSL/Format" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="javascript:if(confirm('http://static.springframework.org/spring-ws/site/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://static.springframework.org/spring-ws/site/'" tppabs="http://static.springframework.org/spring-ws/site/" title="The Spring Framework - Spring Web Services"><img style="border:none;" src="xdev-spring_logo.jpg" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/xdev-spring_logo.jpg"></a><a style="border:none;" href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="s2-banner-rhs.png" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/s2-banner-rhs.png"></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="sample-apps"></a>&#31034;&#20363;&#31243;&#24207;</h1></div></div></div>
+
+
+    <p>
+        &#39033;&#30446;&#20013;&#21253;&#21547;&#20102;&#24456;&#22810;web&#23454;&#20363;&#31243;&#24207;&#12290;
+        &#20026;&#20102;&#19981;&#35753;&#19979;&#36733;&#21253;&#21464;&#24471;&#22826;&#22823;&#65292;&#25105;&#20204;&#21482;&#25226;"tutorial"&#21644;"contacts"&#20004;&#20010;&#20363;&#23376;&#25918;&#21040;&#20102;zip&#21457;&#24067;&#21253;&#37324;&#12290;
+        &#20320;&#21487;&#20197;&#33258;&#24049;&#32534;&#35793;&#37096;&#32626;&#23427;&#20204;&#65292;&#20063;&#21487;&#20197;&#20174;Maven&#20013;&#22830;&#36164;&#28304;&#24211;&#37324;&#33719;&#24471;&#21333;&#29420;&#30340;war&#25991;&#20214;&#12290;
+        &#25105;&#20204;&#24314;&#35758;&#20320;&#20351;&#29992;&#21069;&#19968;&#31181;&#26041;&#27861;&#12290;
+        &#20320;&#21487;&#20197;&#25353;&#29031;<a xmlns:xlink="http://www.w3.org/1999/xlink" href="javascript:if(confirm('http://www.family168.com/tutorial/springsecurity/html/get-source  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·þÎñÆ÷±¨¸æ¸ÃÎÄ¼þÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.family168.com/tutorial/springsecurity/html/get-source'" tppabs="http://www.family168.com/tutorial/springsecurity/html/get-source" target="_top">&#31616;&#20171;</a>&#37324;&#30340;&#20171;&#32461;&#33719;&#24471;&#28304;&#20195;&#30721;&#65292;&#20351;&#29992;maven&#32534;&#35793;&#23427;&#20204;&#20063;&#24456;&#31616;&#21333;&#12290;
+        &#22914;&#26524;&#20320;&#38656;&#35201;&#30340;&#35805;&#65292;&#21487;&#20197;&#22312;
+        <a xmlns:xlink="http://www.w3.org/1999/xlink" href="javascript:if(confirm('http://www.springframework.org/spring-security/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springframework.org/spring-security/'" tppabs="http://www.springframework.org/spring-security/" target="_top">
+            http://www.springframework.org/spring-security/
+        </a>&#32593;&#31449;&#19978;&#25214;&#21040;&#26356;&#22810;&#20449;&#24687;&#12290;
+    </p>
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial-sample"></a>3.1.&nbsp;Tutorial&#31034;&#20363;</h2></div></div></div>
+    
+
+    <p>&#36825;&#20010;tutorial&#31034;&#20363;&#26159;&#24102;&#20320;&#20837;&#38376;&#30340;&#24456;&#22909;&#30340;&#19968;&#20010;&#22522;&#30784;&#20363;&#23376;&#12290;
+    &#23427;&#23436;&#20840;&#20351;&#29992;&#20102;&#31616;&#21333;&#21629;&#21517;&#31354;&#38388;&#37197;&#32622;&#12290;
+    &#32534;&#35793;&#22909;&#30340;&#24212;&#29992;&#23601;&#25918;&#22312;zip&#21457;&#24067;&#21253;&#20013;&#65292;&#24050;&#32463;&#20934;&#22791;&#22909;&#21457;&#24067;&#21040;&#20320;&#30340;web&#23481;&#22120;&#20013;&#65288;<code class="filename">spring-security-samples-tutorial-2.0.x.war</code>&#65289;&#12290;
+    &#20351;&#29992;&#20102;<a href="form.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/form.html" title="Chapter&nbsp;11.&nbsp;&#34920;&#21333;&#35748;&#35777;&#26426;&#21046;">form-based</a>&#39564;&#35777;&#26426;&#21046;&#65292;&#19982;&#24120;&#29992;&#30340;<a href="remember-me.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/remember-me.html" title="Chapter&nbsp;14.&nbsp;Remember-Me&#35748;&#35777;">remember-me</a>&#39564;&#35777;&#25552;&#20379;&#22120;&#30456;&#32467;&#21512;&#65292;&#33258;&#21160;&#20351;&#29992;cookie&#35760;&#24405;&#30331;&#24405;&#20449;&#24687;&#12290;</p>
+
+    <p>&#25105;&#20204;&#25512;&#33616;&#20320;&#20174;tutorial&#20363;&#23376;&#24320;&#22987;&#65292;&#22240;&#20026;XML&#38750;&#24120;&#23567;&#65292;&#20063;&#24456;&#23481;&#26131;&#30475;&#25026;&#12290;
+    &#26356;&#37325;&#35201;&#30340;&#26159;&#65292;&#20320;&#24456;&#23481;&#26131;&#23601;&#21487;&#20197;&#25226;&#36825;&#20010;XML&#25991;&#20214;&#65288;&#21644;&#23427;&#23545;&#24212;&#30340;<code class="literal">web.xml</code>&#20837;&#21475;&#65289;&#28155;&#21152;&#21040;&#20320;&#30340;&#31243;&#24207;&#20013;&#12290;
+    &#21482;&#26377;&#20570;&#22522;&#26412;&#38598;&#25104;&#25104;&#21151;&#30340;&#26102;&#20505;&#65292;&#25105;&#20204;&#24314;&#35758;&#20320;&#35797;&#30528;&#28155;&#21152;&#26041;&#27861;&#39564;&#35777;&#21644;&#39046;&#22495;&#23545;&#35937;&#23433;&#20840;&#12290;</p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="contacts-sample"></a>3.2.&nbsp;Contacts</h2></div></div></div>
+    
+
+    <p>Contacts&#20363;&#23376;&#65292;&#26159;&#19968;&#20010;&#24456;&#39640;&#32423;&#30340;&#20363;&#23376;&#65292;&#23427;&#22312;&#22522;&#26412;&#31243;&#24207;&#23433;&#20840;&#19978;&#38468;&#21152;&#20102;&#39046;&#22495;&#23545;&#35937;&#30340;&#35775;&#38382;&#25511;&#21046;&#21015;&#34920;&#65292;&#28436;&#31034;&#20102;&#26356;&#22810;&#24378;&#22823;&#30340;&#21151;&#33021;&#12290;
+    </p>
+
+    <p>&#35201;&#21457;&#24067;&#23427;&#65292;&#20808;&#25226;Spring Security&#21457;&#24067;&#20013;&#30340;war&#25991;&#20214;&#25353;&#22797;&#21046;&#21040;&#20320;&#30340;&#23481;&#22120;&#30340;<code class="literal">webapps</code>&#30446;&#24405;&#19979;&#12290;
+    &#36825;&#20010;war&#25991;&#20214;&#24212;&#35813;&#21483;&#20570;<code class="filename">spring-security-samples-contacts-2.0.0.war</code>&#65288;&#21518;&#36793;&#30340;&#29256;&#26412;&#21495;&#65292;&#24456;&#22823;&#31243;&#24230;&#19978;&#20381;&#36182;&#20110;&#20320;&#20351;&#29992;&#30340;&#21457;&#24067;&#29256;&#26412;&#65289;&#12290;
+    </p>
+
+    <p>&#22312;&#21551;&#21160;&#20320;&#30340;&#23481;&#22120;&#20043;&#21518;&#65292;&#26816;&#27979;&#19968;&#19979;&#31243;&#24207;&#26159;&#19981;&#26159;&#21152;&#36733;&#20102;&#65292;&#35775;&#38382;<code class="literal">http://localhost:8080/contacts</code>&#65288;&#25110;&#26159;&#20854;&#20182;&#20320;&#25226;war&#21457;&#24067;&#21518;&#65292;&#23545;&#24212;&#20110;&#20320;web&#23481;&#22120;&#30340;URL&#65289;&#12290;</p>
+
+    <p>&#19979;&#19968;&#27493;&#65292;&#28857;&#20987;"Debug"&#12290;
+    &#20320;&#23558;&#30475;&#21040;&#38656;&#35201;&#30331;&#24405;&#30340;&#25552;&#31034;&#65292;&#36825;&#39029;&#19978;&#20250;&#26377;&#19968;&#20123;&#27979;&#35797;&#29992;&#30340;&#29992;&#25143;&#21517;&#21644;&#23494;&#30721;&#12290;
+    &#38543;&#20415;&#20351;&#29992;&#20854;&#20013;&#30340;&#19968;&#20010;&#36890;&#36807;&#35748;&#35777;&#65292;&#23601;&#20250;&#30475;&#21040;&#32467;&#26524;&#39029;&#38754;&#12290;
+    &#23427;&#24212;&#35813;&#20250;&#21253;&#21547;&#19979;&#38754;&#36825;&#26679;&#30340;&#19968;&#27573;&#25104;&#21151;&#20449;&#24687;&#65306;
+    </p><div class="literallayout"><p><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authentication&nbsp;object&nbsp;is&nbsp;of&nbsp;type:&nbsp;org.springframework.security.providers.UsernamePasswordAuthenticationToken<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authentication&nbsp;object&nbsp;as&nbsp;a&nbsp;String:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.springframework.security.providers.UsernamePasswordAuthenticationToken@1f127853:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principal:&nbsp;org.springframework.security.userdetails.User@b07ed00:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username:&nbsp;rod;&nbsp;Password:&nbsp;[PROTECTED];&nbsp;Enabled:&nbsp;true;&nbsp;AccountNonExpired:&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;credentialsNonExpired:&nbsp;true;&nbsp;AccountNonLocked:&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Granted&nbsp;Authorities:&nbsp;ROLE_SUPERVISOR,&nbsp;ROLE_USER;&nbsp;Password:&nbsp;[PROTECTED];&nbsp;Authenticated:&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Details:&nbsp;org.springframework.security.ui.WebAuthenticationDetails@0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RemoteIpAddress:&nbsp;127.0.0.1;&nbsp;SessionId:&nbsp;k5qypsawgpwb;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Granted&nbsp;Authorities:&nbsp;ROLE_SUPERVISOR,&nbsp;ROLE_USER<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authentication&nbsp;object&nbsp;holds&nbsp;the&nbsp;following&nbsp;granted&nbsp;authorities:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROLE_SUPERVISOR&nbsp;(getAuthority():&nbsp;ROLE_SUPERVISOR)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROLE_USER&nbsp;(getAuthority():&nbsp;ROLE_USER)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUCCESS!&nbsp;Your&nbsp;web&nbsp;filters&nbsp;appear&nbsp;to&nbsp;be&nbsp;properly&nbsp;configured!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</p></div><p>
+    </p>
+
+    <p>&#19968;&#26086;&#20320;&#25104;&#21151;&#30340;&#30475;&#21040;&#20102;&#19978;&#38754;&#30340;&#20449;&#24687;&#65292;&#23601;&#21487;&#20197;&#36820;&#22238;&#20363;&#23376;&#31243;&#24207;&#30340;&#20027;&#39029;&#65292;&#28857;&#20987;"Manage"&#20102;&#12290;
+    &#28982;&#21518;&#20320;&#23601;&#21487;&#20197;&#23581;&#35797;&#36825;&#20010;&#31243;&#24207;&#20102;&#12290;
+    &#27880;&#24847;&#65292;&#21482;&#26377;&#24403;&#21069;&#30331;&#24405;&#30340;&#29992;&#25143;&#23545;&#24212;&#30340;&#32852;&#31995;&#20449;&#24687;&#20250;&#26174;&#31034;&#20986;&#26469;&#65292;&#32780;&#19988;&#21482;&#26377;<code class="literal">ROLE_SUPERVISOR</code>&#26435;&#38480;&#30340;&#29992;&#25143;&#21487;&#20197;&#25480;&#26435;&#21024;&#38500;&#20182;&#20204;&#30340;&#32852;&#31995;&#20449;&#24687;&#12290;
+    &#22312;&#36825;&#22330;&#26223;&#21518;&#38754;&#65292;<code class="literal">MethodSecurityInterceptor</code>&#20445;&#25252;&#30528;&#19994;&#21153;&#23545;&#35937;&#12290;</p>
+         <p>&#38472;&#31243;&#24207;&#20801;&#35768;&#20320;&#20462;&#25913;&#35775;&#38382;&#25511;&#21046;&#21015;&#34920;&#65292;&#20998;&#37197;&#19981;&#21516;&#30340;&#32852;&#31995;&#26041;&#24335;&#12290;
+         &#30830;&#20445;&#33258;&#24049;&#22909;&#22909;&#35797;&#29992;&#36807;&#65292;&#30475;&#30475;&#31243;&#24207;&#37324;&#30340;&#19978;&#19979;&#25991;XML&#25991;&#20214;&#65292;&#25630;&#26126;&#30333;&#23427;&#26159;&#22914;&#20309;&#36816;&#34892;&#30340;&#12290;</p>
+
+
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ldap-sample"></a>3.3.&nbsp;LDAP&#20363;&#23376;</h2></div></div></div>
+        
+        <p>
+            LDAP&#20363;&#23376;&#31243;&#24207;&#25552;&#20379;&#20102;&#19968;&#20010;&#22522;&#30784;&#37197;&#32622;&#65292;&#21516;&#26102;&#20351;&#29992;&#21629;&#21517;&#31354;&#38388;&#37197;&#32622;&#21644;&#20351;&#29992;&#20256;&#32479;&#26041;&#24335;bean&#30340;&#37197;&#32622;&#26041;&#24335;&#65292;&#36825;&#20004;&#31181;&#37197;&#32622;&#26041;&#24335;&#37117;&#20889;&#22312;application context&#25991;&#20214;&#37324;&#12290;
+            &#36825;&#24847;&#21619;&#30528;&#65292;&#22312;&#36825;&#20010;&#31243;&#24207;&#37324;&#65292;&#20854;&#23454;&#26159;&#37197;&#32622;&#20102;&#20004;&#20010;&#23450;&#20041;&#39564;&#35777;&#25552;&#20379;&#22120;&#12290;
+        </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="cas-sample"></a>3.4.&nbsp;CAS&#20363;&#23376;</h2></div></div></div>
+        
+        <p>
+            CAS&#31034;&#20363;&#35201;&#27714;&#20320;&#21516;&#26102;&#36816;&#34892;CAS&#26381;&#21153;&#22120;&#21644;CAS&#23458;&#25143;&#31471;&#12290;
+            &#23427;&#27809;&#26377;&#21253;&#21547;&#22312;&#21457;&#24067;&#21253;&#37324;&#65292;&#20320;&#24212;&#35813;&#20351;&#29992; <a xmlns:xlink="http://www.w3.org/1999/xlink" href="javascript:if(confirm('http://www.family168.com/tutorial/springsecurity/html/get-source  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·þÎñÆ÷±¨¸æ¸ÃÎÄ¼þÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.family168.com/tutorial/springsecurity/html/get-source'" tppabs="http://www.family168.com/tutorial/springsecurity/html/get-source" target="_top">&#31616;&#20171;</a>&#20013;&#30340;&#25551;&#36848;&#33719;&#24471;&#28304;&#20195;&#30721;&#12290;
+            &#20320;&#21487;&#20197;&#22312;<code class="filename">sample/cas</code>&#30446;&#24405;&#19979;&#25214;&#21040;&#23545;&#24212;&#30340;&#25991;&#20214;&#12290;
+            &#36825;&#37324;&#36824;&#26377;&#19968;&#20010;<code class="filename">Readme.txt</code>&#25991;&#20214;&#65292;&#35299;&#37322;&#22914;&#20309;&#20174;&#28304;&#20195;&#30721;&#26641;&#20013;&#30452;&#25509;&#36816;&#34892;&#26381;&#21153;&#22120;&#21644;&#23458;&#25143;&#31471;&#65292;&#25552;&#20379;&#23436;&#20840;&#30340;SSL&#25903;&#25345;&#12290;
+            &#20320;&#24212;&#35813;&#19979;&#36733;CAS&#26381;&#21153;&#22120;web&#31243;&#24207;&#65288;&#19968;&#20010;war&#25991;&#20214;&#65289;&#20174;CAS&#32593;&#31449;&#65292;&#25226;&#23427;&#25918;&#21040;<code class="filename">samples/cas/server</code>&#30446;&#24405;&#19979;&#12290;
+        </p>
+    </div>
+
+    <div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="preauth-sample"></a>3.5.&nbsp;Pre-Authentication&#20363;&#23376;</h2></div></div></div>
+        
+        <p>
+            &#36825;&#20010;&#20363;&#23376;&#28436;&#31034;&#20102;&#22914;&#20309;&#20174;<a href="preauth.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/preauth.html" title="Chapter&nbsp;16.&nbsp;&#39044;&#35748;&#35777;&#22330;&#26223;">pre-authentication</a>&#26694;&#26550;&#32465;&#23450;bean&#65292;&#20174;J2EE&#23481;&#22120;&#20013;&#33719;&#24471;&#26377;&#29992;&#30340;&#30331;&#24405;&#20449;&#24687;&#12290;
+            &#29992;&#25143;&#21517;&#21644;&#35282;&#33394;&#26159;&#30001;&#23481;&#22120;&#35774;&#32622;&#30340;&#12290;
+        </p>
+        <p>
+            &#20195;&#30721;&#22312;<code class="filename">samples/preauth</code>&#30446;&#24405;&#19979;&#12290;
+        </p>
+    </div>
+
+
+</div><div xmlns:fo="http://www.w3.org/1999/XSL/Format" class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ns-config.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/ns-config.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="springsecurity.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/springsecurity.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="community.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/community.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;2.&nbsp;Security&#21629;&#21517;&#31354;&#38388;&#37197;&#32622;&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource">Sponsored by SpringSource
+                                        </a></span></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;4.&nbsp;Spring Security&#31038;&#21306;</td></tr></table></div></body></html><script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www./");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">var pageTracker = _gat._getTracker("UA-2857097-3");pageTracker._initData();pageTracker._trackPageview();</script>

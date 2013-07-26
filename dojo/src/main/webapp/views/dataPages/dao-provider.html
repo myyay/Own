@@ -1,0 +1,78 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;9.&nbsp;DAO&#35748;&#35777;&#25552;&#20379;&#22120;</title><link rel="stylesheet" href="html.css" tppabs="http://www.family168.com/tutorial/springsecurity/html/css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.72.0"><link rel="start" href="springsecurity.html" title="Spring Security"><link rel="up" href="authentication.html" title="Part&nbsp;III.&nbsp;&#35748;&#35777;"><link rel="prev" href="authentication-common-auth-services.html" title="Chapter&nbsp;8.&nbsp;&#36890;&#29992;&#35748;&#35777;&#26381;&#21153;"><link rel="next" href="ldap.html" title="Chapter&nbsp;10.&nbsp;LDAP&#35748;&#35777;"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns:fo="http://www.w3.org/1999/XSL/Format" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="javascript:if(confirm('http://static.springframework.org/spring-ws/site/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://static.springframework.org/spring-ws/site/'" tppabs="http://static.springframework.org/spring-ws/site/" title="The Spring Framework - Spring Web Services"><img style="border:none;" src="xdev-spring_logo.jpg" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/xdev-spring_logo.jpg"></a><a style="border:none;" href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="s2-banner-rhs.png" tppabs="http://www.family168.com/tutorial/springsecurity/html/images/s2-banner-rhs.png"></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="dao-provider"></a>DAO&#35748;&#35777;&#25552;&#20379;&#22120;</h1></div></div></div>
+
+
+
+<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dao-provider-overview"></a>9.1.&nbsp;&#32508;&#36848;</h2></div></div></div>
+    
+
+    <p>Spring Security&#21253;&#21547;&#20102;&#19968;&#20010;&#20135;&#21697;&#32423;&#21035;&#30340;<code class="literal">AuthenticationProvider</code>&#23454;&#29616;&#65292;&#21483;&#20570;<code class="literal">DaoAuthenticationProvider</code>&#12290;
+    &#36825;&#20010;&#35748;&#35777;&#25552;&#20379;&#22120;&#20860;&#23481;&#25152;&#26377;&#29983;&#25104;<code class="literal">UsernamePasswordAuthenticationToken</code>&#30340;&#39564;&#35777;&#26426;&#21046;&#65292;&#23427;&#21487;&#33021;&#26159;&#26694;&#26550;&#37324;&#26368;&#24120;&#29992;&#21040;&#30340;&#25552;&#20379;&#22120;&#12290;
+    &#19982;&#20854;&#20182;&#35748;&#35777;&#25552;&#20379;&#22120;&#19968;&#26679;&#65292;DaoAuthenticationProvider&#36890;&#36807;&#19968;&#20010;UserDetailsService&#26469;&#33719;&#24471;&#29992;&#25143;&#21517;&#65292;&#23494;&#30721;&#21644;GrantedAuthority[]&#12290;
+    &#19982;&#20854;&#20182;&#35748;&#35777;&#25552;&#20379;&#22120;&#19981;&#21516;&#30340;&#26159;&#65292;&#36825;&#20010;&#35748;&#35777;&#25552;&#20379;&#22120;&#38656;&#35201;&#33719;&#24471;&#19968;&#20010;&#23494;&#30721;&#65292;&#23427;&#20250;&#26681;&#25454;&#35748;&#35777;&#35831;&#27714;&#23545;&#35937;&#37324;&#30340;&#23494;&#30721;&#26469;&#21028;&#26029;&#35748;&#35777;&#26159;&#21542;&#25104;&#21151;&#12290;</p>
+</div>
+
+<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dao-provider-config"></a>9.2.&nbsp;&#37197;&#32622;</h2></div></div></div>
+    
+
+    <p>&#20320;&#38656;&#35201;&#25226;DaoAuthenticationProvider&#21152;&#20837;&#20320;&#30340;ProviderManager&#21015;&#34920;&#65288;&#22914;&#25105;&#20204;&#22312;&#21442;&#32771;&#25351;&#21335;&#36825;&#31456;&#24320;&#22987;&#35762;&#21040;&#30340;&#65289;&#65292;&#24182;&#30830;&#20445;&#21512;&#36866;&#30340;&#35748;&#35777;&#26426;&#21046;&#37197;&#32622;&#20026;UsernamePasswordAuthenticationToken&#65292;&#20854;&#20182;&#23545;&#25552;&#20379;&#22120;&#33258;&#24049;&#30340;&#37197;&#32622;&#22522;&#26412;&#21644;&#19979;&#38754;&#19968;&#26679;&#31616;&#21333;&#65306;</p>
+
+    <pre class="programlisting">
+        
+&lt;bean id="daoAuthenticationProvider"
+    class="org.springframework.security.providers.dao.DaoAuthenticationProvider"&gt;
+  &lt;property name="userDetailsService" ref="inMemoryDaoImpl"/&gt;
+  &lt;property name="saltSource" ref bean="saltSource"/&gt;
+  &lt;property name="passwordEncoder" ref="passwordEncoder"/&gt;
+&lt;/bean&gt;
+    </pre>
+
+    <p><code class="literal">PasswordEncoder</code>&#21644;<code class="literal">SaltSource</code>&#26159;&#21487;&#36873;&#30340;&#12290;
+        <code class="literal">PasswordEncoder</code>&#20026;&#20174;&#37197;&#32622;&#22909;&#30340;<code class="literal">UserDetailsService</code>&#20013;&#36820;&#22238;&#30340;<code class="literal">UserDetails</code>&#23545;&#35937;&#37324;&#30340;&#23494;&#30721;&#65292;&#25552;&#20379;&#32534;&#30721;&#21644;&#21453;&#32534;&#30721;&#30340;&#21151;&#33021;&#12290;
+        <code class="literal">SaltSource</code>&#20351;&#29992;&#30416;&#20540;&#29983;&#25104;&#23494;&#30721;&#65292;&#36825;&#21487;&#20197;&#25552;&#21319;&#35748;&#35777;&#36164;&#28304;&#23494;&#30721;&#30340;&#23433;&#20840;&#24615;&#12290;
+        Spring Security&#25903;&#25345;MD5&#65292;SHA&#21644;&#32431;&#25991;&#26412;&#32534;&#30721;&#30340;<code class="literal">PasswordEncoder</code>&#23454;&#29616;&#12290;
+        Spring Security&#25552;&#20379;&#20102;&#20004;&#31181;<code class="literal">SaltSource</code>&#23454;&#29616;&#65306;<code class="literal">SystemWideSaltSource</code>&#23545;&#25152;&#26377;&#23494;&#30721;&#37117;&#20351;&#29992;&#30456;&#21516;&#30340;&#30416;&#20540;&#36827;&#34892;&#32534;&#30721;&#65292;<code class="literal">ReflectionSaltSource</code>&#65292;&#20351;&#29992;&#36820;&#22238;&#30340;<code class="literal">UserDetails</code>&#23545;&#35937;&#30340;&#23646;&#24615;&#26469;&#33719;&#24471;&#30416;&#20540;&#12290;
+        &#35831;&#21442;&#32771;JavaDocs&#33719;&#24471;&#36825;&#20123;&#36873;&#39033;&#30340;&#26356;&#22810;&#20449;&#24687;&#12290;</p>
+
+    <p>&#38500;&#20102;&#19978;&#36848;&#30340;&#23646;&#24615;&#65292;<code class="literal">DaoAuthenticationProvider</code>&#36824;&#21487;&#20197;&#20026;<code class="literal">UserDetails</code>&#23545;&#35937;&#25552;&#20379;&#32531;&#23384;&#12290;
+    <code class="literal">UserCache</code>&#25509;&#21475;&#21487;&#20197;&#35753;<code class="literal">DaoAuthenticationProvider</code>&#25226;&#19968;&#20010;<code class="literal">UserDetails</code>&#23545;&#35937;&#25918;&#21040;&#32531;&#23384;&#37324;&#65292;&#22312;&#20197;&#21518;&#30340;&#35748;&#35777;&#36827;&#31243;&#20013;&#65292;&#22914;&#26524;&#38656;&#35201;&#21516;&#26679;&#30340;&#29992;&#25143;&#21517;&#23601;&#20250;&#37325;&#26032;&#33719;&#24471;&#23427;&#12290;
+    &#40664;&#35748;&#24773;&#20917;&#19979;&#65292;<code class="literal">DaoAuthenticationProvider</code>&#20351;&#29992;<code class="literal">NullUserCache</code>&#65292;&#36825;&#24847;&#21619;&#30528;&#19981;&#20351;&#29992;&#32531;&#23384;&#12290;
+    Spring Security&#20063;&#25552;&#20379;&#20102;&#19968;&#20010;&#21487;&#29992;&#30340;&#32531;&#23384;&#23454;&#29616;&#65292;<code class="literal">EhCacheBasedUserCache</code>&#65292;&#22914;&#19979;&#37197;&#32622;&#65306;</p>
+    <pre class="programlisting">
+&lt;bean id="daoAuthenticationProvider"
+    class="org.springframework.security.providers.dao.DaoAuthenticationProvider"&gt;
+  &lt;property name="userDetailsService" ref="userDetailsService"/&gt;
+  &lt;property name="userCache" ref="userCache"/&gt;
+&lt;/bean&gt;
+
+&lt;bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"&gt;
+  &lt;property name="configLocation" value="classpath:/ehcache-failsafe.xml"/&gt;
+&lt;/bean&gt;
+
+&lt;bean id="userCacheBackend" class="org.springframework.cache.ehcache.EhCacheFactoryBean"&gt;
+  &lt;property name="cacheManager" ref="cacheManager"/&gt;
+  &lt;property name="cacheName" value="userCache"/&gt;
+&lt;/bean&gt;
+
+&lt;bean id="userCache" class="org.springframework.security.providers.dao.cache.EhCacheBasedUserCache"&gt;
+  &lt;property name="cache" ref="userCacheBackend"/&gt;
+&lt;/bean&gt;
+    </pre>
+
+    <p>&#25152;&#26377;Spring Security&#30340;EH-CACHE&#23454;&#29616;&#65288;&#21253;&#25324;<code class="literal">EhCacheBasedUserCache</code>&#65289;&#35201;&#27714;&#19968;&#20010;EH-CACHE&#30340;<code class="literal">Cache</code>&#23545;&#35937;&#12290;
+    &#36825;&#20010;<code class="literal">Cache</code>&#23545;&#35937;&#21487;&#20197;&#20174;&#20219;&#20309;&#22320;&#26041;&#33719;&#24471;&#65292;&#19981;&#36807;&#25105;&#20204;&#25512;&#33616;&#20320;&#20351;&#29992;Spring&#30340;&#24037;&#21378;&#31867;&#65292;&#35831;&#21442;&#32771;Spring&#25991;&#26723;&#33719;&#24471;&#26356;&#22810;&#30340;&#32454;&#33410;&#65292;&#22914;&#20309;&#20248;&#21270;&#32531;&#23384;&#23384;&#20648;&#20301;&#32622;&#65292;&#20869;&#23384;&#20351;&#29992;&#65292;&#21076;&#38500;&#31574;&#30053;&#65292;&#36229;&#26102;&#31561;&#12290;</p>
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>&#22823;&#37096;&#20998;&#24773;&#20917;&#65292;&#20320;&#30340;&#31243;&#24207;&#37117;&#26159;&#26377;&#29366;&#24577;&#30340;web&#24212;&#29992;&#31243;&#24207;&#65292;&#20320;&#19981;&#38656;&#35201;&#20351;&#29992;&#32531;&#23384;&#65292;&#22240;&#20026;&#29992;&#25143;&#30340;&#35748;&#35777;&#20449;&#24687;&#20250;&#34987;&#20445;&#23384;&#22312;<code class="literal">HttpSession</code>&#37324;&#12290;
+    </p></div>
+
+    <p>&#25105;&#20204;&#22312;&#35774;&#35745;&#30340;&#26102;&#20505;&#65292;&#20915;&#23450;&#19981;&#25903;&#25345;&#20026;<code class="literal">DaoAuthenticationProvider</code>&#21152;&#38145;&#65292;&#22240;&#20026;&#36825;&#26679;&#20250;&#21152;&#22823;<code class="literal">UserDetailsService</code>&#25509;&#21475;&#30340;&#22797;&#26434;&#24230;&#12290;
+    &#27604;&#22914;&#65292;&#19968;&#20010;&#26041;&#27861;&#21487;&#33021;&#38656;&#35201;&#22312;&#35748;&#35777;&#35831;&#27714;&#22833;&#36133;&#30340;&#26102;&#20505;&#36827;&#34892;&#32047;&#21152;&#35745;&#25968;&#12290;
+    &#36825;&#20123;&#21151;&#33021;&#37117;&#21487;&#20197;&#21033;&#29992;&#19979;&#38754;&#35752;&#35770;&#21040;&#30340;&#24212;&#29992;&#31243;&#24207;&#20107;&#20214;&#21457;&#24067;&#21151;&#33021;&#65292;&#26469;&#36731;&#26494;&#23454;&#29616;&#12290;</p>
+
+    <p><code class="literal">DaoAuthenticationProvider</code>&#36820;&#22238;&#19968;&#20010;<code class="literal">Authentication</code>&#23545;&#35937;&#65292;&#21253;&#21547;&#26377;<code class="literal">principal</code>&#23646;&#24615;&#38598;&#21512;&#12290;
+    &#23427;&#30340;&#20869;&#23481;&#21487;&#33021;&#26159;<code class="literal">String</code>&#65288;&#22522;&#26412;&#23601;&#26159;&#29992;&#25143;&#21517;&#65289;&#25110;&#32773;&#26159;<code class="literal">UserDetails</code>&#23545;&#35937;&#65288;&#26159;&#20174;<code class="literal">UserDetailsService</code>&#33719;&#24471;&#30340;&#65289;&#12290;
+    &#40664;&#35748;&#36820;&#22238;&#30340;&#26159;<code class="literal">UserDetails</code>&#65292;&#23427;&#20801;&#35768;&#28155;&#21152;&#31995;&#32479;&#29305;&#23450;&#30340;&#28508;&#22312;&#23646;&#24615;&#65292;&#27604;&#22914;&#29992;&#25143;&#30340;&#20840;&#21517;&#65292;&#37038;&#20214;&#22320;&#22336;&#31561;&#12290;
+    &#22914;&#26524;&#20351;&#29992;&#23481;&#22120;&#36866;&#37197;&#22120;&#65292;&#25110;&#32773;&#22914;&#26524;&#20320;&#30340;&#31243;&#24207;&#23601;&#26159;&#35201;&#25805;&#20316;<code class="literal">String</code>&#65288;&#23601;&#20687;&#20043;&#21069;&#22312;Spring Security 0.6&#37324;&#21457;&#24067;&#30340;&#24773;&#20917;&#19968;&#26679;&#65289;&#65292;&#20320;&#24212;&#35813;&#25226;&#20320;&#31243;&#24207;&#37324;&#30340;<code class="literal">DaoAuthenticationProvider.forcePrincipalAsString</code>&#23646;&#24615;&#35774;&#32622;&#25104;true&#12290;</p>
+</div>
+</div><div xmlns:fo="http://www.w3.org/1999/XSL/Format" class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="authentication-common-auth-services.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/authentication-common-auth-services.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="springsecurity.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/springsecurity.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ldap.html" tppabs="http://www.family168.com/tutorial/springsecurity/html/ldap.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;8.&nbsp;&#36890;&#29992;&#35748;&#35777;&#26381;&#21153;&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="javascript:if(confirm('http://www.springsource.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.springsource.com/'" tppabs="http://www.springsource.com/" title="SpringSource">Sponsored by SpringSource
+                                        </a></span></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;10.&nbsp;LDAP&#35748;&#35777;</td></tr></table></div></body></html><script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www./");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">var pageTracker = _gat._getTracker("UA-2857097-3");pageTracker._initData();pageTracker._trackPageview();</script>
